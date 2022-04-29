@@ -59,7 +59,7 @@ export const FooterBox: SxProps = {
     display: "flex",
     justifyContent: "space-between",
     flexDirection: "column",
-    alignItems: "flex-start",
+    alignItems: "center",
   };
   export const UserRegisterBox: SxProps = {
     display: "flex",
