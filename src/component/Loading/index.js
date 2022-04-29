@@ -11,7 +11,7 @@ const Loading = () => {
 
 export default Loading;
 
-export const mainContainer : SxProps={
+const mainContainer={
     display: 'flex', flexDirection: 'column', alignItems: 'center',
     height: '100vh', justifyContent: 'center', alignContent: 'center'
 }
