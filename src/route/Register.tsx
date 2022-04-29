@@ -141,28 +141,6 @@ const Register = () => {
           </Container>
         </Grid>
       </Grid>
-      {/* {(nameValid || lastNameValid || emailValid || passwordValid || confirmPasswordValid) &&
-        <> <Typography sx={{ textAlign: 'left' }}>ERROR:</Typography>
-
-          <ul>
-            {nameValid && <li>
-              Please enter first Name
-            </li>}
-            {lastNameValid && <li>
-              Please enter last Name
-            </li>}
-            {emailValid && <li>
-              Please type your email
-            </li>}
-            {passwordValid && <li>
-              Please type password
-            </li>}
-            {confirmPasswordValid && <li>
-              Confirm password should be same as password.
-            </li>}</ul>
-
-        </>
-      } */}
     </Container>
   );
 };
