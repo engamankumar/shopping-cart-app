@@ -51,7 +51,7 @@ export const titleStyle: SxProps = {
       xxs: "120px",
       xs: "120px",
       sm: "170px",
-      md: "170px",
+      md: "130px",
       lg: "170px",
       xl: "170px",
     },

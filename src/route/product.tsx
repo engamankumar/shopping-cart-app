@@ -106,7 +106,7 @@ const Product = () => {
               item
               xs={12}
               sm={6}
-              md={3}
+              md={6}
               lg={3}
               key={index}
               sx={{ pb: 3 }}
