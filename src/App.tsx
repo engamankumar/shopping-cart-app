@@ -15,7 +15,7 @@ import Header from "./route/header";
 import { getBanner } from './store/action/action'
 import { useAppSelector, useAppDispatch } from './store/hook'
 import { Dispatch } from 'redux'
-import Loading from "./component/Loading";
+import Loading from "./component/Loading/Loading";
 function App() {
   const state = useAppSelector((state: any) => state.user)
   const { loading, category, banner } = state;
@@ -31,7 +31,8 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <div className="App">
-        {loading ? <Loading /> :
+        {loading ? <Loading />
+         :
           (<Router>
             <Header>
               <div className='content'>
