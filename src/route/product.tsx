@@ -18,7 +18,7 @@ import { Dispatch } from 'redux'
 import { selectCategory } from '../store/action/action'
 const Product = () => {
   const dispatch: Dispatch<any> = useAppDispatch()
-  const { category, products, order }  = useAppSelector((state: any) => state.user)
+  const { category, products, order } = useAppSelector((state: any) => state.user)
   const [productUI, setProduct] = React.useState(products);
   const Mobile = useMediaQuery("(max-width:640px)");
   const updateProductPage = (order: any) => {
@@ -39,10 +39,10 @@ const Product = () => {
     }
   };
 
-  const selectedCategoryStyle =(categoryorder:Number)=>{
-if(order === categoryorder){
-  return {...selectedCategoryColor}
-}
+  const selectedCategoryStyle = (categoryorder: Number) => {
+    if (order === categoryorder) {
+      return { ...selectedCategoryColor }
+    }
   }
 
   useEffect(() => {
@@ -52,7 +52,7 @@ if(order === categoryorder){
     if (order || order === 0) {
       updateProductPage(parseInt(order));
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [order]);
 
   return (
@@ -83,20 +83,20 @@ if(order === categoryorder){
       </Box>
       <Grid container spacing={1} >
         {Mobile && (
-           <FormControl fullWidth>
-           <InputLabel sx={{fontWeight:'bold',color:'white' }}>Category</InputLabel>
-          <Select
-            labelId="demo-simple-select-label"
-            id="demo-simple-select"
-            value={order === 0 ? '' : order}
-            label="Category"
-            onChange={handleChange}
-            sx={selectStyle}
-          >
-            {category.map((data: any, index: any) => {
-              return <MenuItem key={index} value={data.order}>{data.name}</MenuItem>;
-            })}
-          </Select>
+          <FormControl fullWidth>
+            <InputLabel sx={InputTextLabel}>Category</InputLabel>
+            <Select
+              labelId="demo-simple-select-label"
+              id="demo-simple-select"
+              value={order === 0 ? '' : order}
+              label="Category"
+              onChange={handleChange}
+              sx={selectStyle}
+            >
+              {category.map((data: any, index: any) => {
+                return <MenuItem key={index} value={data.order}>{data.name}</MenuItem>;
+              })}
+            </Select>
           </FormControl>
         )}
 
@@ -170,6 +170,8 @@ export const selectStyle: SxProps = {
   },
 }
 
-export const selectedCategoryColor: SxProps={
-  bgcolor:"#dad9d9"
+export const selectedCategoryColor: SxProps = {
+  bgcolor: "#dad9d9"
 }
+
+export const InputTextLabel: SxProps = { fontWeight: 'bold', color: 'white' }
