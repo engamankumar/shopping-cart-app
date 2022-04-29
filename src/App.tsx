@@ -15,52 +15,54 @@ import Header from "./route/header";
 import { getBanner } from './store/action/action'
 import { useAppSelector, useAppDispatch } from './store/hook'
 import { Dispatch } from 'redux'
+import Loading from "./component/Loading";
 function App() {
   const state = useAppSelector((state: any) => state.user)
   const { loading, category, banner } = state;
   const dispatch: Dispatch<any> = useAppDispatch()
   useEffect(() => {
-    if (!banner || banner.length === 0){
+    if (!banner || banner.length === 0) {
       dispatch(getBanner());
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  },[])
+  }, [])
 
 
   return (
     <ThemeProvider theme={theme}>
       <div className="App">
-        {loading && <>Loading...</>}
-        {!loading && <Router>
-          <Header>
-            <div className='content'>
-              <Box sx={{ minHeight: "89vh" }}>
-                <Routes>
-                  <Route
-                 
-                    path="/"
-                    element={
-                      <Home bannersImage={banner} category={category} />
-                    }
-                  />
-                  <Route
-                    path="/home"
-                    element={
-                      <Home bannersImage={banner} category={category} />
-                    }
-                  />
-                  <Route
-                    path="/products"
-                    element={<Product />}
-                  />
-                  <Route path="/register" element={<Register />} />
-                  <Route path="/signin" element={<SingIn />} />
-                  <Route path="/cart" element={<Cart />} />
-                </Routes>
-              </Box>
-            </div>
-          </Header>
-        </Router>}
+        {loading ? <Loading /> :
+          (<Router>
+            <Header>
+              <div className='content'>
+                <Box sx={{ minHeight: "89vh" }}>
+                  <Routes>
+                    <Route
+
+                      path="/"
+                      element={
+                        <Home bannersImage={banner} category={category} />
+                      }
+                    />
+                    <Route
+                      path="/home"
+                      element={
+                        <Home bannersImage={banner} category={category} />
+                      }
+                    />
+                    <Route
+                      path="/products"
+                      element={<Product />}
+                    />
+                    <Route path="/register" element={<Register />} />
+                    <Route path="/signin" element={<SingIn />} />
+                    <Route path="/cart" element={<Cart />} />
+                  </Routes>
+                </Box>
+              </div>
+            </Header>
+          </Router>)
+          }
 
       </div>
     </ThemeProvider>
