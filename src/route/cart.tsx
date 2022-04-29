@@ -63,7 +63,7 @@ const [cartItem, setCartItem]= React.useState(shoppingCart)
       <Box sx={CartItemBox}>
         {cartItem.map((item: any) => <CartItem key={item.id} item={item} shoppingCart={shoppingCart} increaseQTY={increaseQTY} decreaseQTY={decreaseQTY} />)}
         <Container sx={container}>
-          <Box component={"img"} src="/static/images/lowest-price.png" />
+          <Box component={"img"} src="/static/images/lowest-price.png" alt={"Lowest Price guarantee"}/>
           <Typography sx={cheaperText}>
             You won't find it cheaper anywhere
           </Typography>

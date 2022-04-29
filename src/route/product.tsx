@@ -39,6 +39,12 @@ const Product = () => {
     }
   };
 
+  const selectedCategoryStyle =(categoryorder:Number)=>{
+if(order === categoryorder){
+  return {...selectedCategoryColor}
+}
+  }
+
   useEffect(() => {
     updateProductPage(parseInt(order));
   }, []);
@@ -61,7 +67,7 @@ const Product = () => {
             category.map((data: any, index: any) => {
               return (
                 <div key={data.order}>
-                  <Box key={index} id={data.order} onClick={handleChange}>
+                  <Box key={index} id={data.order} onClick={handleChange} sx={selectedCategoryStyle(data.order)}>
                     <Typography
                       id={data.order}
                       sx={textStyle}
@@ -162,4 +168,8 @@ export const selectStyle: SxProps = {
   ".MuiSelect-icon": {
     color: "white",
   },
+}
+
+export const selectedCategoryColor: SxProps={
+  bgcolor:"#dad9d9"
 }

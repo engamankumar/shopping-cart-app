@@ -36,7 +36,7 @@ const CartItem = ({item, increaseQTY, decreaseQTY}:any) => {
       sx={  mainContainer }
     >
       <Grid item xs={3} sm={3} md={3} lg={3}>
-        <Box component={"img"} src={item.imageURL} sx={{ width: "100%" }} />
+        <Box component={"img"} alt={item.name} src={item.imageURL} sx={{ width: "100%" }} />
       </Grid>
       <Grid item xs={6} sm={6} md={6} lg={6}>
         <Typography
@@ -49,6 +49,7 @@ const CartItem = ({item, increaseQTY, decreaseQTY}:any) => {
         >
           <IconButton
             sx={iconBtn}
+            aria-label="Decrease Quantity"
             onClick={()=>decreaseQuantity(item.id)}
           >
             <RemoveIcon sx={iconStyle} />
@@ -60,6 +61,7 @@ const CartItem = ({item, increaseQTY, decreaseQTY}:any) => {
           </Typography>
           <IconButton
             sx={iconBtn}
+            aria-label="Increase Quantity"
             onClick={()=>addQuantity(item.id)}
           >
             <AddIcon sx={iconStyle} />
