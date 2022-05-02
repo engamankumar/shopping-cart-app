@@ -8,6 +8,7 @@ import {
     ADD_QTY,
     SELECT_CATEGORY
 } from "../action.type";
+import {URL} from '../../config/config'
 import axios from 'axios'
 import { Dispatch } from "redux";
 
@@ -29,9 +30,9 @@ export const logout = () => {
 
 export const getBanner = () => async (dispatch: any) => {
     try {
-        const banner = await axios.get(`http://localhost:5000/banners`)
-        const category = await axios.get(`http://localhost:5000/categories`)
-        const products = await axios.get(`http://localhost:5000/products`)
+        const banner = await axios.get(`${URL}/banners`)
+        const category = await axios.get(`${URL}/categories`)
+        const products = await axios.get(`${URL}/products`)
         const data = {
             banner: banner.data,
             category: category.data.filter((d: any) => d.order !== -1),
@@ -55,7 +56,7 @@ export const addToCart = (id: Number) => async (dispatch: Dispatch<any>) => {
     try {
         var config = {
             method: 'post',
-            url: `http://localhost:5000/addToCart?productID=${id}`,
+            url: `${URL}/addToCart?productID=${id}`,
             headers: {}
         };
         const postProduct = await axios(config);
