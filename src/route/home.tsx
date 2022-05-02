@@ -3,7 +3,7 @@ import Button from "../component/Button/Button-component";
 import { Box, Typography, SxProps } from "@mui/material";
 import CarouselComponent from "../component/Carousel/Carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useAppDispatch } from "../store/hook";
 import { selectCategory } from "../store/action/action";
 import {
@@ -12,11 +12,11 @@ import {
   ADBox,
   ADTitle,
   ADDescription,
-  textColor,
   btnText,
 } from "./home.style";
 import { Dispatch } from "redux";
 const Home = ({ bannersImage, category }: any) => {
+  let navigate = useNavigate();
   const dispatch: Dispatch<any> = useAppDispatch();
   const MainBoxStyle: SxProps = (index:any) => {
     let bool = false;
@@ -27,6 +27,11 @@ const Home = ({ bannersImage, category }: any) => {
     return { ...style };
   };
 
+  const categoryBtnClick =(order: any)=>{
+    console.log(order)
+    dispatch(selectCategory(order))
+    navigate(`/products`);
+  }
   return (
     <>
       <AdCoantiner>
@@ -45,20 +50,16 @@ const Home = ({ bannersImage, category }: any) => {
                     alt={cate.name}
                   />
                   <Box sx={ADBox}>
-                    <Typography sx={ADTitle}>{cate.name}</Typography>
+                    <Typography variant="caption"  sx={ADTitle}>{cate.name}</Typography>
                     <Typography sx={ADDescription}>
                       {cate.description}
                     </Typography>
                     <Button
                       id={cate.order}
                       sx={btnText}
-                      onClick={() => dispatch(selectCategory(cate.order))}
+                      onClick={()=>categoryBtnClick(cate.order)}
+                      title= {`Explore ${cate.key}`}
                     >
-                      <Link className="link" to={`/products`}>
-                        <Typography sx={textColor}>
-                          {`Explore ${cate.key}`}
-                        </Typography>
-                      </Link>
                     </Button>
                   </Box>
                 </Box>
