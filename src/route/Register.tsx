@@ -61,7 +61,7 @@ const Register = () => {
       setEmailValid(true)
       setEmailhelperText("Please provide correct email address.")
     }
-    if (!password || password.length < 6 || !password.match(/^[a-zA-Z0-9]+$/i) || password.match(/\s/) || !password.match(/\d+/)) {
+    if (!password || password.length < 6 || !password.match(/^[a-zA-Z]+$/i) || password.match(/\s/) || !password.match(/\d+/)) {
       flag = false;
       setPasswordValid(true)
       setPasswordhelperText("Length of the password should be atleast 6 and passowrd should have atleat one numeric and alphabets without any spaces.")
