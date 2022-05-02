@@ -1,1 +1,3 @@
-export const URL ="http://localhost:5000"
+
+const {REACT_APP_API_URL} = process.env
+export const URL =REACT_APP_API_URL
