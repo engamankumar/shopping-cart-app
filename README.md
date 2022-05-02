@@ -8,7 +8,8 @@ Backend Application [shopping-cart-assignment](https://github.com/gautam-in/shop
 
 ## Available Scripts
 
-In the project directory, you can run:
+In the project directory, rename the file .env.example to .env then you can run:
+
 
 ### `npm start`
 
