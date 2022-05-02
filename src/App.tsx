@@ -1,7 +1,7 @@
 import {
   Box,
 } from "@mui/material";
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { ThemeProvider } from "@mui/material/styles";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import "./App.css";
@@ -10,7 +10,6 @@ import Home from "./route/home";
 import Product from "./route/product";
 import Register from "./route/Register";
 import SingIn from "./route/singIn";
-import Cart from "./route/cart";
 import Header from "./route/header";
 import { getBanner } from './store/action/action'
 import { useAppSelector, useAppDispatch } from './store/hook'
@@ -20,13 +19,12 @@ function App() {
   const state = useAppSelector((state: any) => state.user)
   const { loading, category, banner } = state;
   const dispatch: Dispatch<any> = useAppDispatch()
+
   useEffect(() => {
     if (!banner || banner.length === 0) {
       dispatch(getBanner());
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
-
+  }, [banner, dispatch])
 
   return (
     <ThemeProvider theme={theme}>
@@ -36,10 +34,9 @@ function App() {
           (<Router>
             <Header>
               <div className='content'>
-                <Box sx={{ minHeight: "89vh" }}>
+                <Box  sx={{ minHeight: "80vh" }} >
                   <Routes>
                     <Route
-
                       path="/"
                       element={
                         <Home bannersImage={banner} category={category} />
@@ -57,14 +54,12 @@ function App() {
                     />
                     <Route path="/register" element={<Register />} />
                     <Route path="/signin" element={<SingIn />} />
-                    <Route path="/cart" element={<Cart />} />
                   </Routes>
                 </Box>
               </div>
             </Header>
           </Router>)
           }
-
       </div>
     </ThemeProvider>
   );
