@@ -8,6 +8,7 @@ const TextFieldComponent = ({ label, type, onChange, helperText,id,...rest }: an
     onChange(id, e.target.value)
   }
   return <TextField required
+  aria-live={helperText && helperText}
     label={label}
     type={type}
     sx={styleTextFiled}

@@ -40,7 +40,7 @@ const SingIn = () => {
       setEmailValid(true)
       setEmailhelperText("Please provide correct email address.")
     }
-    if (!password || password.length < 6 || !password.match(/^[a-zA-Z0-9]+$/i) || password.match(/\s/) || !password.match(/\d+/)) {
+    if (!password || password.length < 6 ||  !/[a-zA-Z]/g.test(password) || password.match(/\s/) || !password.match(/\d+/)) {
       flag = false;
       setPasswordValid(true)
       setPasswordhelperText("Please type correct password")
